@@ -12,7 +12,7 @@ filebeat:
       # For each file found under this path, a harvester is started.
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
-        - /logvol/apache2/access.log
+        - /var/log/nginx/*.log
       #  - /var/log/syslog
       #  - /var/log/*.log
         #- c:\programdata\elasticsearch\logs\*
@@ -145,7 +145,7 @@ filebeat:
     
     -
       paths:
-        - /debugvol/debug.log
+        - /home/Happay_v2/logs/debug.log
       input_type: log
       document_type: happay_log
 
@@ -281,7 +281,7 @@ output:
   ### Logstash as output
   logstash:
     # The Logstash hosts
-    hosts: ["10.4.0.5:5044"]
+    hosts: ["ELK_HOST_IP:5044"]
     bulk_max_size: 1024
     # Number of workers per Logstash host.
     #worker: 1
@@ -300,7 +300,7 @@ output:
     # Optional TLS. By default is off.
     tls:
       # List of root certificates for HTTPS server verifications
-      certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+      # certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
 
       # Certificate for TLS client authentication
       #certificate: "/etc/pki/client/cert.pem"
